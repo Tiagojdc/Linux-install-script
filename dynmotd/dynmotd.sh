@@ -30,8 +30,6 @@ SCREEN=$(screen -ls)
 
 PROCCOUNT=$( ps -Afl 2> /dev/null | wc -l )
 PROCCOUNT=$( expr $PROCCOUNT - 5 )
-
-UPDATESAVAIL=$(cat $DIR/updates-available)
  
 echo -e "\033[1;32m 
 \033[0;35m+++++++++++++++++: \033[0;37mSystem Data\033[0;35m :+++++++++++++++++++
@@ -51,6 +49,5 @@ echo -e "\033[1;32m
 \033[0;35m+       \033[0;37mSessions \033[0;35m= \033[1;32m${SESSIONS}
 \033[0;35m+      \033[0;37mProcesses \033[0;35m= \033[1;32m${PROCCOUNT} of $(ulimit -u) max
 \033[0;35m+        \033[0;37mScreens \033[0;35m= \033[1;32m${SCREEN}
-\033[0;35m+++++++++++++: \033[0;37mHelpful Information\033[0;35m :+++++++++++++++    
 \033[0;37m
 "
