@@ -4,14 +4,16 @@
 use_color=1
 
 if [ ${use_color} -eq 1 ]; then
-    RED=`tput setaf 1`
-    GREEN=`tput setaf 2`
-    YELLOW=`tput setaf 3`
-    BLUE=`tput setaf 4`
-    VIOLET=`tput setaf 5`
-    CYAN=`tput setaf 6`
-    WHITE=`tput setaf 7`
-    GREY=`tput setaf 8`
+    RED=$(tput setaf 1)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 3)
+    BLUE=$(tput setaf 4)
+    VIOLET=$(tput setaf 5)
+    CYAN=$(tput setaf 6)
+    WHITE=$(tput setaf 7)
+    GREY=$(tput setaf 8)
+    RESET=$(tput sgr0)
+    BOLD=$(tput bold)
 else
     RED=""
     GREEN=""
@@ -29,13 +31,13 @@ function __prompt_command(){
     local EXIT=$?
     export PS1=""
     if [ ${EXIT} -ne 0 ]; then
-        export PS1="${WHITE}[${RED}${EXIT}${WHITE}]"
+        export PS1="[\[${RED}\]${EXIT}\[${RESET}\]]"
     fi
 
     if [[ $(id -u) != 0 ]]; then
-        export PS1="${PS1}${CYAN}\u${WHITE}@${GREEN}\h${WHITE}: ${BLUE}\w${WHITE} > "
+	export PS1="${PS1}\[${CYAN}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] >"
     else
-        export PS1="${PS1}${RED}\u${WHITE}@${GREEN}\h${WHITE}: ${BLUE}\w${WHITE} > "
+        export PS1="${PS1}\[${RED}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] >"
     fi
 }
 
