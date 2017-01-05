@@ -64,27 +64,47 @@ fi
 
 
 dynmotd(){
-    my_banner "install dynmotd"
+    my_banner "Install dynmotd"
     cp ./dynmotd/dynmotd.sh /usr/bin/dynmotd
     chmod +x /usr/bin/dynmotd
-    echo "/usr/bin/dynmotd" >> /etc/profile
+    grep -qe '/usr/bin/dynmotd' /etc/profile
+    if [ $? -ne 0 ]; then
+	echo "/usr/bin/dynmotd" >> /etc/profile
+    fi
     info "install sucessfull"
 }
 
-
-install_dependencies(){
-    my_banner "install dependencies"
-    apt-get install -y emacs-nox cron-apt
+install_dependencies_debian(){
+    my_banner "Install dependencies"
+    apt-get install -y \
+emacs-nox \
+cron-apt \
+fail2ban \
+ferm
     info "install sucessfull"
 }
 
+setup_bashrc(){
+    my_banner "Setup bashrc"
+    if [ ! -f /etc/bash_extension ]; then
+	cp ./bashrc/bash_extension.sh /etc/bash_extension
+    fi
+    grep -qe 'source /etc/bash_extension' /etc/bash.bashrc
+    if [ $? -ne 0 ]; then
+	echo 'source /etc/bash_extension' >> /etc/bashrc
+    fi
+    info "Install successfull"
+	
+}
 #function for clone emacs configuration
-#function for setup bashrc
 
 if [ "$(id -u)" != "0" ]; then
     echo "This script must be run as root" 1>&2
     exit 0
 fi
 
-install_dependencies
+install_dependencies_debian
 dynmotd
+setup_bashrc
+
+info "install successfully finished"

@@ -41,7 +41,6 @@ echo -e "\033[1;32m
 \033[0;35m+           \033[0;37mTime \033[0;35m= \033[1;32m${DATE}
 \033[0;35m+            \033[0;37mCPU \033[0;35m= \033[1;32m${CPU_INFO}
 \033[0;35m+         \033[0;37mMemory \033[0;35m= \033[1;32m${MEMORY_USED} Used, ${MEMORY} Total
-\033[0;35m+        \033[0;37mUpdates \033[0;35m= \033[1;32m${UPDATESAVAIL} "Updates Available" 
 \033[0;35m++++++++++++++++++: \033[0;37mUser Data\033[0;35m :++++++++++++++++++++
 \033[0;35m+      \033[0;37m Username \033[0;35m= \033[1;32m${USER}
 \033[0;35m+      \033[0;37mUsergroup \033[0;35m= \033[1;32m${GROUP}
