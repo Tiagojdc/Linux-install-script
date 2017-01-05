@@ -90,7 +90,7 @@ setup_bashrc(){
 
     grep -qe 'source /etc/bash_extension' /etc/bash.bashrc
     if [ $? -ne 0 ]; then
-	echo 'source /etc/bash_extension' >> /etc/bashrc
+	echo 'source /etc/bash_extension' >> /etc/bash.bashrc
     fi
     info "Install successfull"
 	
