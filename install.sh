@@ -82,7 +82,6 @@ install_dependencies_debian(){
 	emacs-nox \
 	cron-apt \
 	fail2ban \
-	ferm \
 	fortune \
 	fortunes-fr \
 	boxes \
