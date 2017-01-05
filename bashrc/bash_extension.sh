@@ -1,5 +1,44 @@
 #!/usr/bin/env bash
 
+
+use_color=1
+
+if [ ${use_color} -eq 1 ]; then
+    RED=`tput setaf 1`
+    GREEN=`tput setaf 2`
+    YELLOW=`tput setaf 3`
+    BLUE=`tput setaf 4`
+    VIOLET=`tput setaf 5`
+    CYAN=`tput setaf 6`
+    WHITE=`tput setaf 7`
+    GREY=`tput setaf 8`
+else
+    RED=""
+    GREEN=""
+    YELLOW=""
+    BLUE=""
+    VIOLET=""
+    CYAN=""
+    WHITE=""
+    GREY=""
+fi
+
+PROMPT_COMMAND=__prompt_command
+
+function __prompt_command(){
+    local EXIT=$?
+    export PS1=""
+    if [ ${EXIT} -ne 0 ]; then
+        export PS1="${WHITE}[${RED}${EXIT}${WHITE}]"
+    fi
+
+    if [[ $(id -u) != 0 ]]; then
+        export PS1="${PS1}${CYAN}\u${WHITE}@${GREEN}\h${WHITE}: ${BLUE}\w${WHITE} > "
+    else
+        export PS1="${PS1}${RED}\u${WHITE}@${GREEN}\h${WHITE}: ${BLUE}\w${WHITE} > "
+    fi
+}
+
 #alias list
 #Work directory
 alias sl="ls $LS_OPTIONS"
@@ -26,10 +65,10 @@ function save(){
 	echo "Usage : save <file>"
     else
 	SAVENAME="${1}.bak.$(date +%Y-%m-%d_%H-%M-%S)"
-	cp -r ${1} ${SAVENAME}
-	if [[ $? -ne 0 ]]; then
-	    echo "File saved in ${SAVENAME}"
-	fi
+cp -r ${1} ${SAVENAME}
+if [[ $? -ne 0 ]]; then
+    echo "File saved in ${SAVENAME}"
+fi
     fi
 }
 

@@ -86,9 +86,8 @@ ferm
 
 setup_bashrc(){
     my_banner "Setup bashrc"
-    if [ ! -f /etc/bash_extension ]; then
-	cp ./bashrc/bash_extension.sh /etc/bash_extension
-    fi
+    cp ./bashrc/bash_extension.sh /etc/bash_extension
+
     grep -qe 'source /etc/bash_extension' /etc/bash.bashrc
     if [ $? -ne 0 ]; then
 	echo 'source /etc/bash_extension' >> /etc/bashrc
