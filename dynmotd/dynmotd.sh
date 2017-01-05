@@ -32,7 +32,7 @@ PROCCOUNT=$(ps -Afl 2> /dev/null | wc -l)
 PROCCOUNT=$(expr $PROCCOUNT - 5)
 
 toilet -f mono12 -F metal $(hostname -s)
-/usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/game/lolcat
+/usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/games/lolcat
 echo -e "\033[1;32m 
 \033[0;35m+++++++++++++++++: \033[0;37mSystem Data\033[0;35m :+++++++++++++++++++
 \033[0;35m+       \033[0;37mHostname \033[0;35m= \033[1;32m${HOSTNAME}
