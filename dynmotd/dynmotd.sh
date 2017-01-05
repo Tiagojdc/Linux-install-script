@@ -28,9 +28,11 @@ LAST_LOGIN=$(echo $(last -a $USER | head -2 | awk 'NR==2{print $3,$4,$5,$6}') fr
 SESSIONS=$(who | grep ${USER} | wc -l)
 SCREEN=$(screen -ls)
 
-PROCCOUNT=$( ps -Afl 2> /dev/null | wc -l )
-PROCCOUNT=$( expr $PROCCOUNT - 5 )
- 
+PROCCOUNT=$(ps -Afl 2> /dev/null | wc -l)
+PROCCOUNT=$(expr $PROCCOUNT - 5)
+
+toilet -f mono12 -F metal $(hostname -s)
+/usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/game/lolcat
 echo -e "\033[1;32m 
 \033[0;35m+++++++++++++++++: \033[0;37mSystem Data\033[0;35m :+++++++++++++++++++
 \033[0;35m+       \033[0;37mHostname \033[0;35m= \033[1;32m${HOSTNAME}

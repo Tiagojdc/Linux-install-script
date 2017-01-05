@@ -43,14 +43,16 @@ function error()
 
 
 if [ ${use_color} -eq 1 ]; then
-    RED=`tput setaf 1`
-    GREEN=`tput setaf 2`
-    YELLOW=`tput setaf 3`
-    BLUE=`tput setaf 4`
-    VIOLET=`tput setaf 5`
-    CYAN=`tput setaf 6`
-    WHITE=`tput setaf 7`
-    GREY=`tput setaf 8`
+    RED=$(tput setaf 1)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 3)
+    BLUE=$(tput setaf 4)
+    VIOLET=$(tput setaf 5)
+    CYAN=$(tput setaf 6)
+    WHITE=$(tput setaf 7)
+    GREY=$(tput setaf 8)
+    RESET=$(tput sgr0)
+    BOLD=$(tput bold)
 else
     RED=""
     GREEN=""
@@ -77,10 +79,15 @@ dynmotd(){
 install_dependencies_debian(){
     my_banner "Install dependencies"
     apt-get install -y \
-emacs-nox \
-cron-apt \
-fail2ban \
-ferm
+	emacs-nox \
+	cron-apt \
+	fail2ban \
+	ferm \
+	fortune \
+	fortunes-fr \
+	boxes \
+	lolcat \
+	toilet
     info "install sucessfull"
 }
 
