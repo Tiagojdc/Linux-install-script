@@ -35,9 +35,9 @@ function __prompt_command(){
     fi
 
     if [[ $(id -u) != 0 ]]; then
-	export PS1="${PS1}\[${CYAN}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] >"
+	export PS1="${PS1}\[${CYAN}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] > "
     else
-        export PS1="${PS1}\[${RED}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] >"
+        export PS1="${PS1}\[${RED}\]\u\[${RESET}\]@\[${GREEN}\]\h\[${RESET}\]: \[${BLUE}\]\w\[${RESET}\] > "
     fi
 }
 
