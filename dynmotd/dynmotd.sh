@@ -43,7 +43,8 @@ PROCCOUNT=$(ps -Afl 2> /dev/null | wc -l)
 PROCCOUNT=$(expr $PROCCOUNT - 5)
 
 toilet -f mono12 -F metal $(hostname -s)
-/usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/games/lolcat
+#/usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/games/lolcat
+/usr/games/cowsay $(/usr/games/fortune /usr/share/games/fortunes/fr/informatique) | /usr/games/lolcat
 echo -e "
 ${BOLD}${CYAN}+++++++++++++++++: ${RESET}System Data${CYAN}${BOLD} :+++++++++++++++++++
 ${CYAN}+       ${RESET}Hostname ${CYAN}= ${GREEN}${BOLD}${HOSTNAME}
