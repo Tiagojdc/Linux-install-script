@@ -84,7 +84,7 @@ install_dependencies_debian(){
 	fail2ban \
 	fortune \
 	fortunes-fr \
-	boxes \
+	cowsay \
 	lolcat \
 	toilet
     info "install sucessfull"
