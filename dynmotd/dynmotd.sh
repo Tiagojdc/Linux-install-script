@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+VIOLET=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+GREY=$(tput setaf 8)
+RESET=$(tput sgr0)
+BOLD=$(tput bold)
+
 HOSTNAME=$(hostname)
 IP_ADDRESS=$(ip a | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' |  sed ':a;N;$!ba;s/\n/, /g')
 KERNEL=$(uname -r)
@@ -33,22 +44,22 @@ PROCCOUNT=$(expr $PROCCOUNT - 5)
 
 toilet -f mono12 -F metal $(hostname -s)
 /usr/games/fortune /usr/share/games/fortunes/fr/informatique | boxes -d cat -a hc -p h8 | /usr/games/lolcat
-echo -e "\033[1;32m 
-\033[0;35m+++++++++++++++++: \033[0;37mSystem Data\033[0;35m :+++++++++++++++++++
-\033[0;35m+       \033[0;37mHostname \033[0;35m= \033[1;32m${HOSTNAME}
-\033[0;35m+   \033[0;37mIPv4 Address \033[0;35m= \033[1;32m${IP_ADDRESS}
-\033[0;35m+         \033[0;37mKernel \033[0;35m= \033[1;32m${KERNEL}
-\033[0;35m+         \033[0;37mDistro \033[0;35m= \033[1;32m${SYSTEM}
-\033[0;35m+         \033[0;37mUptime \033[0;35m= \033[1;32m${DAYS} days, ${HOURS} hours, ${MINUTES} minutes, ${SECONDS} seconds
-\033[0;35m+           \033[0;37mTime \033[0;35m= \033[1;32m${DATE}
-\033[0;35m+            \033[0;37mCPU \033[0;35m= \033[1;32m${CPU_INFO}
-\033[0;35m+         \033[0;37mMemory \033[0;35m= \033[1;32m${MEMORY_USED} Used, ${MEMORY} Total
-\033[0;35m++++++++++++++++++: \033[0;37mUser Data\033[0;35m :++++++++++++++++++++
-\033[0;35m+      \033[0;37m Username \033[0;35m= \033[1;32m${USER}
-\033[0;35m+      \033[0;37mUsergroup \033[0;35m= \033[1;32m${GROUP}
-\033[0;35m+     \033[0;37mLast Login \033[0;35m= \033[1;32m${LAST_LOGIN}
-\033[0;35m+       \033[0;37mSessions \033[0;35m= \033[1;32m${SESSIONS}
-\033[0;35m+      \033[0;37mProcesses \033[0;35m= \033[1;32m${PROCCOUNT} of $(ulimit -u) max
-\033[0;35m+        \033[0;37mScreens \033[0;35m= \033[1;32m${SCREEN}
-\033[0;37m
+echo -e "
+${BOLD}${CYAN}+++++++++++++++++: ${RESET}System Data${CYAN}${BOLD} :+++++++++++++++++++
+${CYAN}+       ${RESET}Hostname ${CYAN}= ${GREEN}${BOLD}${HOSTNAME}
+${CYAN}+   ${RESET}IPv4 Address ${CYAN}= ${GREEN}${BOLD}${IP_ADDRESS}
+${CYAN}+         ${RESET}Kernel ${CYAN}= ${GREEN}${BOLD}${KERNEL}
+${CYAN}+         ${RESET}Distro ${CYAN}= ${GREEN}${BOLD}${SYSTEM}
+${CYAN}+         ${RESET}Uptime ${CYAN}= ${GREEN}${BOLD}${DAYS} days, ${HOURS} hours, ${MINUTES} minutes, ${SECONDS} seconds
+${CYAN}+           ${RESET}Time ${CYAN}= ${GREEN}${BOLD}${DATE}
+${CYAN}+            ${RESET}CPU ${CYAN}= ${GREEN}${BOLD}${CPU_INFO}
+${CYAN}+         ${RESET}Memory ${CYAN}= ${GREEN}${BOLD}${MEMORY_USED} Used / ${MEMORY} Total
+${BOLD}${CYAN}++++++++++++++++++: ${RESET}User Data${BOLD}${CYAN} :++++++++++++++++++++
+${CYAN}+       ${RESET}Username ${CYAN}= ${GREEN}${BOLD}${USER}
+${CYAN}+      ${RESET}Usergroup ${CYAN}= ${GREEN}${BOLD}${GROUP}
+${CYAN}+     ${RESET}Last Login ${CYAN}= ${GREEN}${BOLD}${LAST_LOGIN}
+${CYAN}+       ${RESET}Sessions ${CYAN}= ${GREEN}${BOLD}${SESSIONS}
+${CYAN}+      ${RESET}Processes ${CYAN}= ${GREEN}${BOLD}${PROCCOUNT} of $(ulimit -u) max
+${CYAN}+        ${RESET}Screens ${CYAN}= ${GREEN}${BOLD}${SCREEN}
+${RESET}
 "
