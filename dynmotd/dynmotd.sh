@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-if [ ! -z ${TERM} ]; then
+if [ ! ${TERM} = "unknown" ]; then
     RED=$(tput setaf 1)
     GREEN=$(tput setaf 2)
     YELLOW=$(tput setaf 3)

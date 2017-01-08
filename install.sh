@@ -82,6 +82,7 @@ install_dependencies_debian(){
 	emacs-nox \
 	cron-apt \
 	fail2ban \
+	screen \
 	fortune \
 	fortunes-fr \
 	cowsay \
