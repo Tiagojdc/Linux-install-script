@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 3)
-BLUE=$(tput setaf 4)
-VIOLET=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-GREY=$(tput setaf 8)
-RESET=$(tput sgr0)
-BOLD=$(tput bold)
+if [ ! -z ${TERM} ]; then
+    RED=$(tput setaf 1)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 3)
+    BLUE=$(tput setaf 4)
+    VIOLET=$(tput setaf 5)
+    CYAN=$(tput setaf 6)
+    WHITE=$(tput setaf 7)
+    GREY=$(tput setaf 8)
+    RESET=$(tput sgr0)
+    BOLD=$(tput bold)
+fi
 
 HOSTNAME=$(hostname)
 IP_ADDRESS=$(ip a | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' |  sed ':a;N;$!ba;s/\n/, /g')
