@@ -59,7 +59,7 @@ alias v="vim"
 
 alias p="ps auxw"
 alias pg="ps auxw | grep $GREP_OPTIONS"
-
+alias freem='free -h && sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && free -h'
 #functions
 
 function save(){
